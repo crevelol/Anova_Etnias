@@ -1,7 +1,5 @@
 library(readxl)
-Compilado <- read_excel("C:/Users/carlo/Downloads/Compilado.xlsx")
-
-View(Compilado)
+Compilado <- read_excel("C:/Users/carlo/Music/Proyecto/Proyecto_Estadistica/Compilado.xlsx")
 
 data = Compilado
 data <- data[-(1:2),,drop=FALSE]#Quitamos los titulos
@@ -34,6 +32,12 @@ cejas_pre = rep.int(0, dim(cejas_d_pre)[1])
 cejas_cal = (cejas_i_cal+cejas_d_cal)/2
 #Valor de las cejas derecha e izquierda de la diagonal en promedio del predicho
 cejas_pre = (cejas_i_pre+cejas_d_pre)/2
+
+media_cejas_cal = mean(cejas_cal$...6)
+desviacion_cejas_cal = sd(cejas_cal$...6)
+
+media_cejas_pre = mean(cejas_pre$...10)
+desviacion_cejas_pre = sd(cejas_pre$...10)
 
 ###################################
 #Ojos
@@ -69,6 +73,12 @@ ojos_cal = (ojos_i_cal+ojos_d_cal)/2
 ojos_pre = (ojos_i_pre+ojos_d_pre)/2
 #-------------------------------------#
 
+media_ojos_cal = mean(ojos_cal$...22)
+desviacion_ojos_cal = sd(ojos_cal$...22)
+
+media_ojos_pre = mean(ojos_pre$...26)
+desviacion_ojos_pre = sd(ojos_pre$...26)
+
 ###################################
 #Nariz
 ###################################
@@ -88,6 +98,12 @@ nariz_cal <- as.data.frame(nariz_cal)
 #-------------------------------------#
 nariz_pre <- as.data.frame(nariz_pre)
 #-------------------------------------#
+
+media_nariz_cal = mean(nariz_cal$...38)
+desviacion_nariz_cal = sd(nariz_cal$...38)
+
+media_nariz_pre = mean(nariz_pre$...42)
+desviacion_nariz_pre = sd(nariz_pre$...42)
 
 ###################################
 #Boca
@@ -109,6 +125,12 @@ boca_cal <- as.data.frame(boca_cal)
 boca_pre <- as.data.frame(boca_pre)
 #-------------------------------------#
 
+media_boca_cal = mean(boca_cal$...46)
+desviacion_boca_cal = sd(boca_cal$...46)
+
+media_boca_pre = mean(boca_pre$...50)
+desviacion_boca_pre = sd(boca_pre$...50)
+
 #######################################
 etnia <- data[,2,drop=FALSE]
 
@@ -126,41 +148,58 @@ boca_pre <- boca_pre[,1:2,drop=FALSE]
 M_b = ((boca_cal$...2 == 'M')*1)*boca_cal$...46
 B_M_c = M_b
 M_b = M_b[M_b!=0]
+M_b_desviacion = sd(M_b)
+r_b_m = range(M_b)
 M_b = mean(M_b)
+
 
 I_b = ((boca_cal$...2 == 'I')*1)*boca_cal$...46
 B_I_c = I_b
 I_b = I_b[I_b!=0]
+I_b_desviacion = sd(I_b)
+r_b_i = range(I_b)
 I_b = mean(I_b)
 
 B_b = ((boca_cal$...2 == 'B')*1)*boca_cal$...46
 B_B_c = B_b
 B_b = B_b[B_b!=0]
+B_b_desviacion = sd(B_b)
+r_b_b = range(B_b)
 B_b = mean(B_b)
 
 AFC_b = ((boca_cal$...2 == 'AFC')*1)*boca_cal$...46
 B_AFC_c = AFC_b
 AFC_b = AFC_b[AFC_b!=0]
+AFC_b_desviacion = sd(AFC_b)
+r_b_afc = range(AFC_b)
 AFC_b = mean(AFC_b)
 
 M1_b = ((boca_pre$...2 == 'M')*1)*boca_pre$...50
 B_M_p = M1_b
 M1_b = M1_b[M1_b!=0]
+M1_b_desviacion = sd(M1_b)
+r_b_m1 = range(M1_b)
 M1_b = mean(M1_b)
 
 I1_b = ((boca_pre$...2 == 'I')*1)*boca_pre$...50
 B_I_p = I1_b
 I1_b = I1_b[I1_b!=0]
+I1_b_desviacion = sd(I1_b)
+r_b_i1 = range(I1_b)
 I1_b = mean(I1_b)
 
 B1_b = ((boca_pre$...2 == 'B')*1)*boca_pre$...50
 B_B_p = B1_b
 B1_b = B1_b[B1_b!=0]
+B1_b_desviacion = sd(B1_b)
+r_b_b1 = range(B1_b)
 B1_b = mean(B1_b)
 
 AFC1_b = ((boca_pre$...2 == 'AFC')*1)*boca_pre$...50
 B_AFC_p = AFC1_b
 AFC1_b = AFC1_b[AFC1_b!=0]
+AFC1_b_desviacion = sd(AFC1_b)
+r_b_afc1 = range(AFC1_b)
 AFC1_b = mean(AFC1_b)
 
 #####             OJOS
@@ -177,41 +216,57 @@ ojos_pre <- ojos_pre[,1:2,drop=FALSE]
 M_o = ((ojos_cal$...2 == 'M')*1)*ojos_cal$...22
 O_M_c = M_o
 M_o = M_o[M_o!=0]
+M_o_desviacion = sd(M_o)
+r_o_m = range(M_o)
 M_o = mean(M_o)
 
 I_o = ((ojos_cal$...2 == 'I')*1)*ojos_cal$...22
 O_I_c = I_o
 I_o = I_o[I_o!=0]
+I_o_desviacion = sd(I_o)
+r_o_i = range(I_o)
 I_o = mean(I_o)
 
 B_o = ((ojos_cal$...2 == 'B')*1)*ojos_cal$...22
 O_B_c = B_o
 B_o = B_o[B_o!=0]
+B_o_desviacion = sd(B_o)
+r_o_b = range(B_o)
 B_o = mean(B_o)
 
 AFC_o = ((ojos_cal$...2 == 'AFC')*1)*ojos_cal$...22
 O_AFC_c = AFC_o
 AFC_o = AFC_o[AFC_o!=0]
+AFC_o_desviacion = sd(AFC_o)
+r_o_afc = range(AFC_o)
 AFC_o = mean(AFC_o)
 
 M1_o = ((ojos_pre$...2 == 'M')*1)*ojos_pre$...26
 O_M_p = M1_o
 M1_o = M1_o[M1_o!=0]
+M1_o_desviacion = sd(M1_o)
+r_o_m1 = range(M1_o)
 M1_o = mean(M1_o)
 
 I1_o = ((ojos_pre$...2 == 'I')*1)*ojos_pre$...26
 O_I_p = I1_o
 I1_o = I1_o[I1_o!=0]
+I1_o_desviacion = sd(I1_o)
+r_o_i1 = range(I1_o)
 I1_o = mean(I1_o)
 
 B1_o = ((ojos_pre$...2 == 'B')*1)*ojos_pre$...26
 O_B_p = B1_o
 B1_o = B1_o[B1_o!=0]
+B1_o_desviacion = sd(B1_o)
+r_o_b1 = range(B1_o)
 B1_o = mean(B1_o)
 
 AFC1_o = ((ojos_pre$...2 == 'AFC')*1)*ojos_pre$...26
 O_AFC_p = AFC1_o
 AFC1_o = AFC1_o[AFC1_o!=0]
+AFC1_o_desviacion = sd(AFC1_o)
+r_o_afc1 = range(AFC1_o)
 AFC1_o = mean(AFC1_o)
 
 #####             NARIZ
@@ -228,41 +283,57 @@ nariz_pre <- nariz_pre[,1:2,drop=FALSE]
 M_n = ((nariz_cal$...2 == 'M')*1)*nariz_cal$...38
 N_M_c = M_n
 M_n = M_n[M_n!=0]
+M_n_desviacion = sd(M_n)
+r_n_m = range(M_n)
 M_n = mean(M_n)
 
 I_n = ((nariz_cal$...2 == 'I')*1)*nariz_cal$...38
 N_I_c = I_n
 I_n = I_n[I_n!=0]
+I_n_desviacion = sd(I_n)
+r_n_i = range(I_n)
 I_n = mean(I_n)
 
 B_n = ((nariz_cal$...2 == 'B')*1)*nariz_cal$...38
 N_B_c = B_n
 B_n = B_n[B_n!=0]
+B_n_desviacion = sd(B_n)
+r_n_b = range(B_n)
 B_n = mean(B_n)
 
 AFC_n = ((nariz_cal$...2 == 'AFC')*1)*nariz_cal$...38
 N_AFC_c = AFC_n
 AFC_n = AFC_n[AFC_n!=0]
+AFC_n_desviacion = sd(AFC_n)
+r_n_afc = range(AFC_n)
 AFC_n = mean(AFC_n)
 
 M1_n = ((nariz_pre$...2 == 'M')*1)*nariz_pre$...42
 N_M_p = M1_n
 M1_n = M1_n[M1_n!=0]
+M1_n_desviacion = sd(M1_n)
+r_n_m1 = range(M1_n)
 M1_n = mean(M1_n)
 
 I1_n = ((nariz_pre$...2 == 'I')*1)*nariz_pre$...42
 N_I_p = I1_n
 I1_n = I1_n[I1_n!=0]
+I1_n_desviacion = sd(I1_n)
+r_n_i1 = range(I1_n)
 I1_n = mean(I1_n)
 
 B1_n = ((nariz_pre$...2 == 'B')*1)*nariz_pre$...42
 N_B_p = B1_n
 B1_n = B1_n[B1_n!=0]
+B1_n_desviacion = sd(B1_n)
+r_n_b1 = range(B1_n)
 B1_n = mean(B1_n)
 
 AFC1_n = ((nariz_pre$...2 == 'AFC')*1)*nariz_pre$...42
 N_AFC_p = AFC1_n
 AFC1_n = AFC1_n[AFC1_n!=0]
+AFC1_n_desviacion = sd(AFC1_n)
+r_n_afc1 = range(AFC1_n)
 AFC1_n = mean(AFC1_n)
 
 #####             CEJAS
@@ -278,41 +349,57 @@ cejas_pre <- cejas_pre[,1:2,drop=FALSE]
 M_cejas = ((cejas_cal$...2 == 'M')*1)*cejas_cal$...6
 Cejas_M_c = M_cejas
 M_cejas = M_cejas[M_cejas!=0]
+M_cejas_desviacion = sd(M_cejas)
+r_cejas_m = range(M_cejas)
 M_cejas = mean(M_cejas)
 
 I_cejas = ((cejas_cal$...2 == 'I')*1)*cejas_cal$...6
 Cejas_I_c = I_cejas
 I_cejas = I_cejas[I_cejas!=0]
+I_cejas_desviacion = sd(I_cejas)
+r_cejas_i = range(I_cejas)
 I_cejas = mean(I_cejas)
 
 B_cejas = ((cejas_cal$...2 == 'B')*1)*cejas_cal$...6
 Cejas_B_c = B_cejas
 B_cejas = B_cejas[B_cejas!=0]
+B_cejas_desviacion = sd(B_cejas)
+r_cejas_b = range(B_cejas)
 B_cejas = mean(B_cejas)
 
 AFC_cejas = ((cejas_cal$...2 == 'AFC')*1)*cejas_cal$...6
 Cejas_AFC_c = AFC_cejas
 AFC_cejas = AFC_cejas[AFC_cejas!=0]
+AFC_cejas_desviacion = sd(AFC_cejas)
+r_cejas_afc = range(AFC_cejas)
 AFC_cejas = mean(AFC_cejas)
 
 M1_cejas = ((cejas_pre$...2 == 'M')*1)*cejas_pre$...10
 Cejas_M_p = M1_cejas
 M1_cejas = M1_cejas[M1_cejas!=0]
+M1_cejas_desviacion = sd(M1_cejas)
+r_cejas_m1 = range(M1_cejas)
 M1_cejas = mean(M1_cejas)
 
 I1_cejas = ((cejas_pre$...2 == 'I')*1)*cejas_pre$...10
 Cejas_I_p = I1_cejas
 I1_cejas = I1_cejas[I1_cejas!=0]
+I1_cejas_desviacion = sd(I1_cejas)
+r_cejas_i1 = range(I1_cejas)
 I1_cejas = mean(I1_cejas)
 
 B1_cejas = ((cejas_pre$...2 == 'B')*1)*cejas_pre$...10
 Cejas_B_p = B1_cejas
 B1_cejas = B1_cejas[B1_cejas!=0]
+B1_cejas_desviacion = sd(B1_cejas)
+r_cejas_b1 = range(B1_cejas)
 B1_cejas = mean(B1_cejas)
 
 AFC1_cejas = ((cejas_pre$...2 == 'AFC')*1)*cejas_pre$...10
 Cejas_AFC_p = AFC1_cejas
 AFC1_cejas = AFC1_cejas[AFC1_cejas!=0]
+AFC1_cejas_desviacion = sd(AFC1_cejas)
+r_cejas_afc1 = range(AFC1_cejas)
 AFC1_cejas = mean(AFC1_cejas)
 
 library(ggplot2)
@@ -475,7 +562,7 @@ levels(df1$Class1) <- c("Mc","Ic","Bc","AFCc","Mp","Ip","Bp","AFCp")
 
 ggboxplot(df1, x = "Class1", y = "vec1", 
           color = "Class1", palette = c("#00AFBB", "#E7B800", "#FC4E07","#D82E2E", "#00AFBB", "#E7B800", "#FC4E07","#D82E2E"),
-          ylab = "Diagonal Boca", xlab = "Grupo etnico", add = "jitter")
+          ylab = "Diagonal Boca", xlab = "REAL (1=M, 2=B, 3=I, 4=N) PRE (5=M, 6=B, 7=I, 8=N)", add = "jitter")
 df1[, 'Class1'] <- as.factor(df1[, 'Class1'])
 res.aov1 <- aov(vec1 ~ Class1, data = df1)
 summary(res.aov1)
@@ -484,7 +571,7 @@ levels(df2$Class2) <- c("Mc","Ic","Bc","AFCc","Mp","Ip","Bp","AFCp")
 
 ggboxplot(df2, x = "Class2", y = "vec2", 
           color = "Class2", palette = c("#00AFBB", "#E7B800", "#FC4E07","#D82E2E", "#00AFBB", "#E7B800", "#FC4E07","#D82E2E"),
-          ylab = "Diagonal Ojos", xlab = "Grupo etnico", add = "jitter")
+          ylab = "Diagonal Ojos", xlab = "REAL (1=M, 2=B, 3=I, 4=N) PRE (5=M, 6=B, 7=I, 8=N)", add = "jitter")
 df2[, 'Class2'] <- as.factor(df2[, 'Class2'])
 res.aov2 <- aov(vec2 ~ Class2, data = df2)
 summary(res.aov2)
@@ -493,7 +580,7 @@ levels(df3$Class3) <- c("Mc","Ic","Bc","AFCc","Mp","Ip","Bp","AFCp")
 
 ggboxplot(df3, x = "Class3", y = "vec3", 
           color = "Class3", palette = c("#00AFBB", "#E7B800", "#FC4E07","#D82E2E", "#00AFBB", "#E7B800", "#FC4E07","#D82E2E"),
-          ylab = "Diagonal Cejas", xlab = "Grupo etnico", add = "jitter")
+          ylab = "Diagonal Cejas", xlab = "REAL (1=M, 2=B, 3=I, 4=N) PRE (5=M, 6=B, 7=I, 8=N)", add = "jitter")
 df3[, 'Class3'] <- as.factor(df3[, 'Class3'])
 res.aov3 <- aov(vec3 ~ Class3, data = df3)
 summary(res.aov3)
@@ -502,7 +589,8 @@ levels(df4$Class4) <- c("Mc","Ic","Bc","AFCc","Mp","Ip","Bp","AFCp")
 
 ggboxplot(df4, x = "Class4", y = "vec4", 
           color = "Class4", palette = c("#00AFBB", "#E7B800", "#FC4E07","#D82E2E", "#00AFBB", "#E7B800", "#FC4E07","#D82E2E"),
-          ylab = "Diagonal Nariz", xlab = "Grupo etnico", add = "jitter")
+          ylab = "Diagonal Nariz", xlab = "REAL (1=M, 2=B, 3=I, 4=N) PRE (5=M, 6=B, 7=I, 8=N)", add = "jitter")
 df4[, 'Class4'] <- as.factor(df4[, 'Class4'])
 res.aov4 <- aov(vec4 ~ Class4, data = df4)
 summary(res.aov4)
+
